@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ArmadaCollection;
-use App\Models\Armada;
+use App\Http\Resources\LakaCollection;
+use App\Models\Laka;
 use Illuminate\Http\Request;
 
-class ArmadaController extends Controller
+class LakaController extends Controller
 {
     public function index(Request $request)
     {
@@ -15,7 +15,7 @@ class ArmadaController extends Controller
         $offset = $request->query('offset', 0); // default offset 0 jika tidak ada
 
         // Query untuk mendapatkan data
-        $query = Armada::query();
+        $query = Laka::query();
 
         // Kondisi untuk mengambil semua data jika limit tidak ada
         if ($limit) {
@@ -26,11 +26,11 @@ class ArmadaController extends Controller
 
         // handle status code
         if ($lakas->isEmpty()) {
-            return (new ArmadaCollection(false, 'Data Armada tidak ditemukan', collect([])))
+            return (new LakaCollection(false, 'Data Laka tidak ditemukan', collect([])))
                 ->response()
                 ->setStatusCode(404);
         }
 
-        return new ArmadaCollection(true, 'Daftar Data Armada', $lakas);
+        return new LakaCollection(true, 'Daftar Data Laka', $lakas);
     }
 }

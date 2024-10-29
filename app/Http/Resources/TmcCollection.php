@@ -38,6 +38,7 @@ class TmcCollection extends ResourceCollection
             "success"   => $this->status,
             "message"   => $this->message,
             "data"      => TmcResource::collection($this->resource),
+            "total"     => count($this->collection)
         ];
     }
 }

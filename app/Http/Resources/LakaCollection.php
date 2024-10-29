@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ArmadaCollection extends ResourceCollection
+class LakaCollection extends ResourceCollection
 {
     //define properti
     public $status;
@@ -27,7 +27,6 @@ class ArmadaCollection extends ResourceCollection
         $this->message = $message;
     }
 
-
     /**
      * Transform the resource collection into an array.
      *
@@ -38,7 +37,7 @@ class ArmadaCollection extends ResourceCollection
         return [
             "success"   => $this->status,
             "message"   => $this->message,
-            "data"      => $this->resource,
+            "data"      => LakaResource::collection($this->resource),
             "total"     => count($this->collection)
         ];
     }

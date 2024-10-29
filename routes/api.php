@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\API\TmcController;
 use App\Http\Controllers\API\ArmadaController;
+use App\Http\Controllers\API\CctvController;
+use App\Http\Controllers\API\LakaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +23,14 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Rute API Tmc
-Route::get('tmc', [TmcController::class, 'all']);
-Route::get('tmc-perpage', [TmcController::class, 'index']);
+Route::get('tmc', [TmcController::class, 'index']);
+// Route::get('tmc-perpage', [TmcController::class, 'index']);
 
 // Rute API Tmc
 Route::get('armada', [ArmadaController::class, 'index']);
+
+// Rute API Laka dengan fitur limit, offset
+Route::get('laka', [LakaController::class, 'index']);
+
+// Rute API Cctv dengan fitur limit, offset
+Route::get('cctv', [CctvController::class, 'index']);
